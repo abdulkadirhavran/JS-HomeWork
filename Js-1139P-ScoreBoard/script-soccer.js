@@ -37,3 +37,11 @@ function plusScore(team) { /* team class'ını kastediyoruz */
       alert("Geçersiz Değer");
     }
   }
+
+
+  /*
+function decrease() {  /~ Azaltma kısmı ~/
+
+  document.getElementById("increaseNumber").innerHTML = --value;
+
+}*/

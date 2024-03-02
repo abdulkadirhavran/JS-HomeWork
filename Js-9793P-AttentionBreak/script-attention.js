@@ -29,9 +29,4 @@ function pauseAudio() {
 
 
 
-/*
-function decrease() {  /~ Azaltma kısmı ~/
 
-  document.getElementById("increaseNumber").innerHTML = --value;
-
-}*/
