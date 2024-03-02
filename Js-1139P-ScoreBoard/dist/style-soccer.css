@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  background-image: url(img/rams-park-stadyumu.webp);
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 150px auto;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+}
