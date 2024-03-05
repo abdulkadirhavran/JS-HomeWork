@@ -14,48 +14,50 @@
   </head>
   <body>
     <div class="container" id="container">
-      <div class="team" id="left">
-        <h2>Team A</h2>
-        <p id="scoreA">0</p>
+      <div class="team" id="leftTeam">
+        <h2>Team Left</h2>
+        <p id="scoreTeam1">0</p>
         <div class="score-control mt-3 mb-3">
-          <button type="button" class="btn btn-primary" onclick="increaseScore(L)">
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="increaseScoreL()"
+          >
             +
           </button>
           <button
             type="button"
             class="btn btn-primary"
-            onclick=" decreaseScore(L)"
+            onclick=" decreaseScoreL()"
           >
             -
           </button>
         </div>
-        <button onclick="setScore(L)">Score Settings</button>
-        <button>İsim Ayarla</button>
-        <button id="resetL">Reset</button>
+        <button type="button" class="btn btn-primary" id="resetL" onclick="resetL()">Reset</button>
+        <button type="button" class="btn btn-primary" id="enterScoreL" onclick="promptL()">Enter Score</button>
       </div>
 
-      <div class="team" id="right">
-        <h2>Team B</h2>
-        <p id="scoreB">0</p>
+      <div class="team" id="rightTeam">
+        <h2>Team Right</h2>
+        <p id="scoreTeam2">0</p>
         <div class="score-control mt-3 mb-3">
           <button
             type="button"
             class="btn btn-primary"
-            onclick="increaseScore(R)"
+            onclick="increaseScoreR()"
           >
             +
           </button>
           <button
             type="button"
             class="btn btn-primary"
-            onclick=" decreaseScore(R)"
+            onclick="decreaseScoreR()"
           >
             -
           </button>
         </div>
-        <button onclick="setScore(R)">Score Settings</button>
-        <button>İsim Ayarla</button>
-        <button id="resetR">Reset</button>
+        <button type="button" class="btn btn-primary" id="resetR" onclick="resetR()">Reset</button>
+        <button type="button" class="btn btn-primary" id="enterScoreR" onclick="promptR()">Enter Score</button>
       </div>
     </div>
     <script

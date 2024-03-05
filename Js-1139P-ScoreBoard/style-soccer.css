@@ -17,14 +17,16 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin: 70px auto;
+  width: 900px;
   background-color: rgba(183, 218, 249, 0.4);
   padding: 25px;
-  border-radius: 2rem;
+  border-radius: 3rem;
 }
 
 .btn {
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
+  padding: 10px 10px;
 }
 
 p{
@@ -32,7 +34,6 @@ p{
 
 }
 .team {
-
-  align-items: center;
+text-align: center;
 
 }
