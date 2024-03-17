@@ -18,6 +18,7 @@ body {
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
+  margin-right: 25px;
 }
 
 .tab button.active {
@@ -28,5 +29,6 @@ body {
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
-  border-top: none;
+  border-top: 0.5px solid black;
+  
 }

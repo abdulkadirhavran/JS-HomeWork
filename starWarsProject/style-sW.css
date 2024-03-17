@@ -1,0 +1,27 @@
+*{
+  color: white;
+
+
+}
+
+body {
+  background-image: url(https://wallpaperset.com/w/full/2/6/d/86862.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+
+}
+
+.card {
+
+ /*  display: none; */
+ width: 17rem;
+ height: 22rem;
+
+
+}

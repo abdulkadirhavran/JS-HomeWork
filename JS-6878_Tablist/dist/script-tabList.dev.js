@@ -1,14 +1,17 @@
-function openCity(evt, cityName) {
-  let i;
-  let tabcontent;
-  let tablinks;
+"use strict";
 
+function openCity(evt, cityName) {
+  var i;
+  var tabcontent;
+  var tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
 
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
   /* ++++++++++++-------------++++++++++++++++ */
+
+
   tablinks = document.getElementsByClassName("tablinks");
 
   for (i = 0; i < tablinks.length; i++) {
@@ -16,6 +19,5 @@ function openCity(evt, cityName) {
   }
 
   document.getElementById(cityName).style.display = "block";
-
   evt.currentTarget.className += " active";
 }
