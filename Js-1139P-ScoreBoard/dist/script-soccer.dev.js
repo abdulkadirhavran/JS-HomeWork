@@ -1,44 +1,80 @@
 "use strict";
 
-function plusScore(team) {
-  /* team class'ını kastediyoruz */
-  var scoreId = "score ".concat(team);
-  var scoreElement = document.getElementById(scoreId);
-  var score = parseInt(scoreElement.textContent);
-  scoreElement.textContent = ++score;
+var scoreL = 0;
+
+function increaseScoreL() {
+  document.getElementById("scoreTeam1").innerHTML = ++scoreL;
 }
 
-function negativeScore(team) {
-  var scoreElement = document.getElementById("score" + team);
-  var currentScore = parseInt(scoreElement.innerText);
+function promptL() {
+  var value = prompt("Lütfen bir skor girin:");
 
-  if (currentScore > 0) {
-    currentScore--;
-    scoreElement.innerText = currentScore;
-  } else {
-    alert("Skor 0'dan küçük olamaz");
-  }
-}
-
-document.getElementById("resetL").addEventListener("click", function () {
-  document.getElementById("scoreL").innerText = "0";
-});
-document.getElementById("resetR").addEventListener("click", function () {
-  document.getElementById("scoreR").innerText = "0";
-});
-
-function setScore(team) {
-  var score = prompt("İstenilen Gol :");
-
-  if (score !== null && !isNaN(score)) {
-    var scoreNum = parseInt(score);
+  if (value !== null && !isNaN(value)) {
+    var scoreNum = parseInt(value);
 
     if (Number.isInteger(scoreNum)) {
-      document.getElementById("score".concat(team)).textContent = scoreNum;
+      document.getElementById("scoreTeam1").textContent = scoreNum;
     } else {
       alert("Lütfen Rakam Giriniz");
     }
   } else {
-    alert("Geçersiz Değer");
+    alert("Skor sayı türünde olmalı");
+    document.getElementById("scoreTeam1").innerHTML = NaN;
+  }
+}
+
+function resetL() {
+  if (scoreL != 0) {
+    document.getElementById("scoreTeam1").innerHTML = 0;
+  }
+}
+
+function decreaseScoreL() {
+  document.getElementById("scoreTeam1").innerText = --scoreL;
+
+  if (scoreL <= 0) {
+    document.getElementById("scoreTeam1").innerHTML = 0;
+    scoreL = 0;
+  }
+}
+/* ------------Team2 Codes------------- */
+
+
+var scoreR = 0;
+
+function increaseScoreR() {
+  document.getElementById("scoreTeam2").innerHTML = ++scoreR;
+}
+
+function decreaseScoreR() {
+  document.getElementById("scoreTeam2").innerText = --scoreR;
+
+  if (scoreR <= 0) {
+    document.getElementById("scoreTeam2").innerHTML = 0;
+    scoreR = 0;
+  }
+}
+
+function promptR() {
+  var value = prompt("Lütfen bir skor girin:");
+
+  if (value !== null && !isNaN(value)) {
+    var scoreNum = parseInt(value);
+
+    if (Number.isInteger(scoreNum)) {
+      document.getElementById("scoreTeam2").textContent = scoreNum;
+    } else {
+      alert("Lütfen Rakam Giriniz");
+    }
+  } else {
+    alert("Skor sayı türünde olmalı");
+    document.getElementById("scoreTeam2").innerHTML = NaN;
+  }
+}
+
+function resetR() {
+  if (scoreR != 0) {
+    var scoreZero = document.getElementById("scoreTeam2");
+    scoreZero.innerHTML = 0;
   }
 }

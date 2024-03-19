@@ -1,6 +1,6 @@
 "use strict";
 
-var Characters = [{
+var characters = [{
   id: 1,
   name: "Luke Skywalker",
   pic: "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg",
@@ -81,32 +81,46 @@ var Characters = [{
   pic: "https://vignette.wikia.nocookie.net/starwars/images/7/7f/Jabba_SWSB.png",
   homeworld: "tatooine"
 }, {
-  id: 18,
+  id: 17,
   name: "Wedge Antilles",
-  pic: "https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg",
+  pic: "https://static.wikia.nocookie.net/starwars/images/7/7e/WedgesEntireHead-ROTJ.png/revision/latest?cb=20200511024543",
   homeworld: "corellia"
 }, {
-  id: 19,
+  id: 18,
   name: "Jek Tono Porkins",
   pic: "https://vignette.wikia.nocookie.net/starwars/images/e/eb/JekPorkins-DB.png",
   homeworld: "bestine"
 }, {
-  id: 20,
+  id: 19,
   name: "Yoda",
   pic: "https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png"
 }, {
-  id: 21,
+  id: 20,
   name: "Palpatine",
   pic: "https://vignette.wikia.nocookie.net/starwars/images/d/d8/Emperor_Sidious.png",
   homeworld: "naboo"
 }];
-var row = document.getElementsById("characterRow");
-var button = document.getElementById("btton");
+var showBtton = document.getElementById("btton");
+/* Button'a ulaştık */
+
+showBtton.style.backgroundColor = "#18903C";
+var renderStatus = true;
 
 function renderCharacters() {
-  var character = document.createElement("div");
-  var node = document.createTextNode();
-  character.appendChild(node);
-  var element = document.getElementById("characterRow");
-  element.appendChild(character);
+  var characterRow = document.getElementById("characterRow");
+  /* Bilgileri html de basacağımız div id'si */
+
+  if (renderStatus === true) {
+    characterRow.innerHTML += characters.map(function (character) {
+      return "\n      <div class=\"card col-lg-4 col-md-6 mb-2 text-center\">\n       <img src=\"".concat(character.pic, "\" class=\"card-img-top\" alt=\"characters\">\n       <div class=\"card-body\">\n         <h2 class=\"card-title\">").concat(character.name, "</h2>\n         <p class=\"card-text text-black\">Planet : ").concat(character.homeworld || null, "</p>\n       </div>\n      </div>");
+    });
+    showBtton.textContent = "Hide Characters";
+    showBtton.style.backgroundColor = "red";
+  } else {
+    characterRow.innerHTML = "";
+    showBtton.textContent = "Show Characters Again";
+    showBtton.style.backgroundColor = "#18903C";
+  }
+
+  renderStatus = !renderStatus;
 }

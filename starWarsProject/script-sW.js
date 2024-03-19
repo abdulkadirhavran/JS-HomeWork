@@ -1,4 +1,4 @@
-const Characters = [
+const characters = [
   {
     id: 1,
     name: "Luke Skywalker",
@@ -96,52 +96,58 @@ const Characters = [
     homeworld: "tatooine",
   },
   {
-    id: 18,
+    id: 17,
     name: "Wedge Antilles",
-    pic: "https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg",
+    pic: "https://static.wikia.nocookie.net/starwars/images/7/7e/WedgesEntireHead-ROTJ.png/revision/latest?cb=20200511024543",
     homeworld: "corellia",
   },
   {
-    id: 19,
+    id: 18,
     name: "Jek Tono Porkins",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/e/eb/JekPorkins-DB.png",
     homeworld: "bestine",
   },
   {
-    id: 20,
+    id: 19,
     name: "Yoda",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png",
   },
   {
-    id: 21,
+    id: 20,
     name: "Palpatine",
     pic: "https://vignette.wikia.nocookie.net/starwars/images/d/d8/Emperor_Sidious.png",
     homeworld: "naboo",
   },
 ];
 
-const row = document.getElementsById("characterRow");
-const button = document.getElementById("btton");
+const showBtton =
+  document.getElementById("btton"); /* Button'a ulaştık */
 
-function renderCharacters(){
-  const character = document.createElement("div")
-  const node = document.createTextNode();
-  character.appendChild(node);
-  const element = document.getElementById("characterRow");
-  element.appendChild(character);
+showBtton.style.backgroundColor = "#18903C";
 
+let renderStatus = true;
 
+function renderCharacters() {
+  const characterRow = document.getElementById("characterRow"); /* Bilgileri html de basacağımız div id'si */
 
+  if (renderStatus === true) {
+    characterRow.innerHTML += characters.map(function (character) {
+      return(`
+      <div class="card col-lg-4 col-md-6 mb-2 text-center">
+       <img src="${character.pic}" class="card-img-top" alt="characters">
+       <div class="card-body">
+         <h2 class="card-title">${character.name}</h2>
+         <p class="card-text text-black">Planet : ${character.homeworld || null}</p>
+       </div>
+      </div>`);
+    });
+    showBtton.textContent = "Hide Characters";
+    showBtton.style.backgroundColor = "red";
+    
+  } else {
+    characterRow.innerHTML= "";
+    showBtton.textContent ="Show Characters Again";
+    showBtton.style.backgroundColor = "#18903C"; 
+  }
+  renderStatus = !renderStatus;
 }
-
-
-
-
-
-
-
-
-
-
-
-
