@@ -120,34 +120,85 @@ const characters = [
   },
 ];
 
-const showBtton =
-  document.getElementById("btton"); /* Button'a ulaştık */
+const showBtton = document.getElementById("btton"); /* Button'a ulaştık */
 
 showBtton.style.backgroundColor = "#18903C";
 
 let renderStatus = true;
 
 function renderCharacters() {
-  const characterRow = document.getElementById("characterRow"); /* Bilgileri html de basacağımız div id'si */
+  const characterRow =
+    document.getElementById(
+      "characterRow"
+    ); /* Bilgileri html de basacağımız div id'si */
 
   if (renderStatus === true) {
     characterRow.innerHTML += characters.map(function (character) {
-      return(`
+      return `
       <div class="card col-lg-4 col-md-6 mb-2 text-center">
        <img src="${character.pic}" class="card-img-top" alt="characters">
        <div class="card-body">
          <h2 class="card-title">${character.name}</h2>
-         <p class="card-text text-black">Planet : ${character.homeworld || null}</p>
+         <p class="card-text text-black">Planet : ${
+           character.homeworld || null
+         }</p>
        </div>
-      </div>`);
+      </div>`;
     });
     showBtton.textContent = "Hide Characters";
     showBtton.style.backgroundColor = "red";
-    
   } else {
-    characterRow.innerHTML= "";
-    showBtton.textContent ="Show Characters Again";
-    showBtton.style.backgroundColor = "#18903C"; 
+    characterRow.innerHTML = "";
+    showBtton.textContent = "Show Characters Again";
+    showBtton.style.backgroundColor = "#18903C";
   }
   renderStatus = !renderStatus;
 }
+
+let homeworldRaw = characters.map(
+  (character) => character.homeworld ?? "other"
+);
+console.log(homeworldRaw);
+
+let homeworldUnique = [...new Set(homeworldRaw)];
+console.log(homeworldUnique);
+
+let homeworldLowCase = homeworldUnique.map((item) => item.toLowerCase());
+console.log(homeworldLowCase);
+
+let homeworld = homeworldLowCase;
+
+let radioInput = document.querySelector(".homeworldList");
+
+for (i = 0; i < homeworlds.length; i++) {
+  radioInput.innerHTML += `
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="${homeworld[i]}" id="inlineRadio${i}">
+  <label class="form-check-label" for="inlineRadio${i}">
+    ${homeworld[i]}
+  </label>
+</div>`;
+}
+
+radioInput.addEventListener("change", function (event) {
+  const selectedHomeworld = event.target.value;
+
+  row.innerHTML = "";
+  characters.filter(function (character) {
+    characters.homeworld = homeworld;
+    if (character.homeworld == selectedHomeworld) {
+      row.innerHTML += `
+            <div class="card col-lg-3 col-md-4 mb-3 card-build text-center" >
+            <img src="${character.pic}" class="card-img-top card-img " >
+            <div class="card-body">
+            <h5 class="card-title text-center text-white">${character.name}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">id : ${character.id}</li>
+            <li class="list-group-item">${character.homeworld}</li>
+            </ul>
+        </div>
+          `
+    }
+  })
+});

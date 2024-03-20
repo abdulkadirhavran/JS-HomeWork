@@ -124,3 +124,20 @@ function renderCharacters() {
 
   renderStatus = !renderStatus;
 }
+
+var homeworldRaw = characters.map(function (character) {
+  return character.homeworld;
+});
+console.log(homeworldRaw);
+/* let homeworldUnique = [...new Set(homeworldRaw)];
+console.log(homeworldUnique); */
+
+/* for (i = 0; i < homeworldRaw.length; i++) {
+  radioInput.innerHTML += `
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="${homeworld[i]}" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    ${homeworld[i]}
+  </label>
+</div>`;
+} */
