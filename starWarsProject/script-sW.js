@@ -143,7 +143,7 @@ function renderCharacters() {
            character.homeworld || null
          }</p>
        </div>
-      </div>`;
+      </div> `;
     });
     showBtton.textContent = "Hide Characters";
     showBtton.style.backgroundColor = "red";
@@ -155,29 +155,28 @@ function renderCharacters() {
   renderStatus = !renderStatus;
 }
 
-let homeworldRaw = characters.map(
-  (character) => character.homeworld ?? "other"
-);
-console.log(homeworldRaw);
+let homeworldRaw = characters.map((character) => character.homeworld ?? "other");
+//console.log(homeworldRaw);
 
 let homeworldUnique = [...new Set(homeworldRaw)];
-console.log(homeworldUnique);
+//console.log(homeworldUnique);
 
 let homeworldLowCase = homeworldUnique.map((item) => item.toLowerCase());
-console.log(homeworldLowCase);
+//console.log(homeworldLowCase);
 
 let homeworld = homeworldLowCase;
 
 let radioInput = document.querySelector(".homeworldList");
 
-for (i = 0; i < homeworlds.length; i++) {
-  radioInput.innerHTML += `
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="${homeworld[i]}" id="inlineRadio${i}">
-  <label class="form-check-label" for="inlineRadio${i}">
-    ${homeworld[i]}
-  </label>
-</div>`;
+for (i = 0; i < homeworld.length; i++) {
+  radioInput.innerHTML += ` 
+  <div class="form-check form-check-inline">
+   <input class="form-check-input" type="radio" name="flexRadioDefault" id="inlineRadio${i}" value = "${homeworld[i]}">
+   <label class="form-check-label" for="inlineRadio${i}">
+   ${homeworld[i]}
+   </label>
+  </div>
+   `;
 }
 
 radioInput.addEventListener("change", function (event) {
@@ -186,19 +185,21 @@ radioInput.addEventListener("change", function (event) {
   row.innerHTML = "";
   characters.filter(function (character) {
     characters.homeworld = homeworld;
-    if (character.homeworld == selectedHomeworld) {
+    if (character.homeworld === selectedHomeworld) {
       row.innerHTML += `
             <div class="card col-lg-3 col-md-4 mb-3 card-build text-center" >
-            <img src="${character.pic}" class="card-img-top card-img " >
-            <div class="card-body">
-            <h5 class="card-title text-center text-white">${character.name}</h5>
+              <img src="${character.pic}" class="card-img-top card-img " >
+              <div class="card-body">
+                <h5 class="card-title text-center text-white">${character.name}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+               <li class="list-group-item">id : ${character.id}</li>
+               <li class="list-group-item">Planet: ${character.homeworld}</li>
+              </ul>
             </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">id : ${character.id}</li>
-            <li class="list-group-item">${character.homeworld}</li>
-            </ul>
-        </div>
-          `
+          `;
     }
-  })
+  });
 });
+
+

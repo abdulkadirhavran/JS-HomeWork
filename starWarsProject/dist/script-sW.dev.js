@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var characters = [{
   id: 1,
   name: "Luke Skywalker",
@@ -127,17 +135,30 @@ function renderCharacters() {
 
 var homeworldRaw = characters.map(function (character) {
   return character.homeworld;
-});
-console.log(homeworldRaw);
-/* let homeworldUnique = [...new Set(homeworldRaw)];
-console.log(homeworldUnique); */
+}); //console.log(homeworldRaw);
 
-/* for (i = 0; i < homeworldRaw.length; i++) {
-  radioInput.innerHTML += `
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="${homeworld[i]}" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    ${homeworld[i]}
-  </label>
-</div>`;
-} */
+var homeworldUnique = _toConsumableArray(new Set(homeworldRaw)); //console.log(homeworldUnique);
+
+
+var homeworldLowCase = homeworldUnique.map(function (item) {
+  return item.toLowerCase();
+}); //console.log(homeworldLowCase);
+
+var homeworld = homeworldLowCase;
+var radioInput = document.querySelector(".homeworldList");
+
+for (i = 0; i < homeworld.length; i++) {
+  radioInput.innerHTML += " \n  <div class=\"form-check form-check-inline\">\n   <input class=\"form-check-input\" type=\"radio\" name=\"flexRadioDefault\" id=\"inlineRadio".concat(i, "\" value = \"").concat(homeworld[i], "\">\n   <label class=\"form-check-label\" for=\"inlineRadio").concat(i, "\">\n   ").concat(homeworld[i], "\n   </label>\n  </div>\n   ");
+}
+
+radioInput.addEventListener("change", function (event) {
+  var selectedHomeworld = event.target.value;
+  row.innerHTML = "";
+  characters.filter(function (character) {
+    characters.homeworld = homeworld;
+
+    if (character.homeworld === selectedHomeworld) {
+      row.innerHTML += "\n            <div class=\"card col-lg-3 col-md-4 mb-3 card-build text-center\" >\n            <img src=\"".concat(character.pic, "\" class=\"card-img-top card-img \" >\n            <div class=\"card-body\">\n            <h5 class=\"card-title text-center text-white\">").concat(character.name, "</h5>\n            </div>\n            <ul class=\"list-group list-group-flush\">\n            <li class=\"list-group-item\">id : ").concat(character.id, "</li>\n            <li class=\"list-group-item\">").concat(character.homeworld, "</li>\n            </ul>\n        </div>\n          ");
+    }
+  });
+});
