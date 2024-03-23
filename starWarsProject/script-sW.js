@@ -155,6 +155,8 @@ function renderCharacters() {
   renderStatus = !renderStatus;
 }
 
+/* ++++---  PART 2 ----+++++ */
+
 let homeworldRaw = characters.map((character) => character.homeworld ?? "other");
 //console.log(homeworldRaw);
 
