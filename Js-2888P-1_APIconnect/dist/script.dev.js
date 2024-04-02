@@ -49,4 +49,4 @@ function showUsers(data) {
   });
 }
 
-getUsers(); //Fonksiyonu mutlaka çağırmamız gerekiyor.
+getUsers(); //Fonksiyonu mutlaka çağırıp inspect'te console sekmesini kontrol etmeliyiz
