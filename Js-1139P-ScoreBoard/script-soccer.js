@@ -37,6 +37,7 @@ function decreaseScoreL() {
 }
 
 /* ------------Team2 Codes------------- */
+
 let scoreR = 0;
 
 

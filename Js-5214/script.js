@@ -1,5 +1,5 @@
 function myFunction() {
-  var x = document.getElementById("myLinks");
+  const x = document.getElementById("myLinks");
   if (x.className === "topnav") 
   {
     x.classList.add("responsive");

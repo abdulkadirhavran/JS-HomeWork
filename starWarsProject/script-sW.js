@@ -120,9 +120,9 @@ const characters = [
   },
 ];
 
-const showBtton = document.getElementById("btton"); /* Button'a ulaştık */
+const showButton = document.getElementById("btton"); /* Button'a ulaştık */
 
-showBtton.style.backgroundColor = "#18903C";
+showButton.style.backgroundColor = "#18903C";
 
 let renderStatus = true;
 
@@ -145,12 +145,12 @@ function renderCharacters() {
        </div>
       </div> `;
     });
-    showBtton.textContent = "Hide Characters";
-    showBtton.style.backgroundColor = "red";
+    showButton.textContent = "Hide Characters";
+    showButton.style.backgroundColor = "red";
   } else {
     characterRow.innerHTML = "";
-    showBtton.textContent = "Show Characters Again";
-    showBtton.style.backgroundColor = "#18903C";
+    showButton.textContent = "Show Characters Again";
+    showButton.style.backgroundColor = "#18903C";
   }
   renderStatus = !renderStatus;
 }
